@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/RockyWorld/Scene/Level1.unity
+    guid: 8c929315556327e48a1aaf0fc08ad58f
+  - enabled: 1
+    path: Assets/RockyWorld/Scene/Level2.unity
+    guid: 5c44399ca9ea6cb46912a1ca624d8eb9
   m_configObjects: {}
