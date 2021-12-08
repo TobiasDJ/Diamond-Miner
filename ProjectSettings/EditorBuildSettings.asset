@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/RockyWorld/Scene/Menu.unity
+    guid: 6b8ccf9893576ae42a0b6f78afaf655b
+  - enabled: 1
+    path: Assets/RockyWorld/Scene/Level1.unity
+    guid: 8c929315556327e48a1aaf0fc08ad58f
   m_configObjects: {}
