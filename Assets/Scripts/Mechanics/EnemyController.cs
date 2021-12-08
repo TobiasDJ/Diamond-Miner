@@ -30,7 +30,7 @@ namespace Platformer.Mechanics
             _audio = GetComponent<AudioSource>();
             spriteRenderer = GetComponent<SpriteRenderer>();
         }
-
+/*
         void OnCollisionEnter2D(Collision2D collision)
         {
             var player = collision.gameObject.GetComponent<PlayerController>();
@@ -40,7 +40,7 @@ namespace Platformer.Mechanics
                 ev.player = player;
                 ev.enemy = this;
             }
-        }
+        } */
 
         void Update()
         {
