@@ -8,6 +8,7 @@ TagManager:
   - Spikes
   - Enemy01
   - Ground
+  - StoneDoor
   layers:
   - Default
   - TransparentFX

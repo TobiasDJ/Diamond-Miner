@@ -15,7 +15,7 @@ public class PlayerDeath : MonoBehaviour
         if(collision.gameObject.tag == "Spikes"){
             animator.SetBool("dead", true);
 
-            await Task.Delay(100);
+            await Task.Delay(200);
             Destroy (gameObject);  
             
             LevelManager.instance.Respawn();
@@ -24,7 +24,7 @@ public class PlayerDeath : MonoBehaviour
         if(collision.gameObject.tag == "Enemy01"){
             animator.SetBool("dead", true);
 
-            await Task.Delay(100);
+            await Task.Delay(200);
             Destroy (gameObject); 
 
             LevelManager.instance.Respawn();
