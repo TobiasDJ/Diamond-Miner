@@ -28,13 +28,24 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-
     private void Update(){
         mx = Input.GetAxisRaw("Horizontal");
 
         if(Input.GetButtonDown("Jump") && IsGrounded()){
             Jump();
         }
+        if(Mathf.Abs(mx) > 0.05f){
+            animator.SetBool("isRunning", true);
+        }else{
+            animator.SetBool("isRunning", false);
+        }
+        if(mx > 0f){
+            transform.localScale = new Vector3(1f, 1f, 1f);
+        }else if(mx < 0f){
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
+        
+        animator.SetBool("isGrounded", IsGrounded());
     }
 
     public void FixedUpdate(){
