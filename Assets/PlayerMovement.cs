@@ -40,9 +40,9 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isRunning", false);
         }
         if(mx > 0f){
-            transform.localScale = new Vector3(1f, 1f, 1f);
+            transform.localScale = new Vector3(2f, 2f, 2f);
         }else if(mx < 0f){
-            transform.localScale = new Vector3(-1f, 1f, 1f);
+            transform.localScale = new Vector3(-2f, 2f, 2f);
         }
         
         animator.SetBool("isGrounded", IsGrounded());
