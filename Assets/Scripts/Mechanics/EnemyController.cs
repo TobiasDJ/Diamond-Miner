@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Platformer.Gameplay;
 using UnityEngine;
 using static Platformer.Core.Simulation;
+using System.Threading.Tasks;
 
 namespace Platformer.Mechanics
 {
@@ -19,6 +20,7 @@ namespace Platformer.Mechanics
         internal AnimationController control;
         internal Collider2D _collider;
         internal AudioSource _audio;
+        internal Animator animator;
         SpriteRenderer spriteRenderer;
 
         public Bounds Bounds => _collider.bounds;
@@ -29,18 +31,19 @@ namespace Platformer.Mechanics
             _collider = GetComponent<Collider2D>();
             _audio = GetComponent<AudioSource>();
             spriteRenderer = GetComponent<SpriteRenderer>();
+            animator = GetComponent<Animator>();
         }
-/*
-        void OnCollisionEnter2D(Collision2D collision)
+
+        public async void OnCollisionEnter2D(Collision2D collision)
         {
             var player = collision.gameObject.GetComponent<PlayerController>();
             if (player != null)
             {
-                var ev = Schedule<PlayerEnemyCollision>();
-                ev.player = player;
-                ev.enemy = this;
+                animator.SetBool("attack", true);
+                await Task.Delay(1000);
+                animator.SetBool("attack", false);
             }
-        } */
+        } 
 
         void Update()
         {

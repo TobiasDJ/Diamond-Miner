@@ -29,10 +29,11 @@ namespace Platformer.Mechanics
         //active frame in animation, updated by the controller.
         internal int frame = 0;
         internal bool collected = false;
-
+        GameObject stoneDoor;
         void Awake()
         {
             _renderer = GetComponent<SpriteRenderer>();
+            stoneDoor = GameObject.FindWithTag("StoneDoor");
             if (randomAnimationStartTime)
                 frame = Random.Range(0, sprites.Length);
             sprites = idleAnimation;
@@ -50,7 +51,9 @@ namespace Platformer.Mechanics
             if (collected) return;
             //disable the gameObject and remove it from the controller update list.
             frame = 0;
+            Destroy(stoneDoor);
             sprites = collectedAnimation;
+            
             if (controller != null)
                 collected = true;
             //send an event into the gameplay system to perform some behaviour.
