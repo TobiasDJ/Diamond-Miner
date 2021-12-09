@@ -1,3 +1,4 @@
+using System.Runtime.Serialization;
 using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,16 +16,20 @@ public class PlayerNamePersistance : MonoBehaviour
   TextMeshProUGUI PlayerName;
   TextMeshProUGUI ChooseNameButton;
 
+  [SerializeField] Transform History;
+  [SerializeField] Transform MainMenu;
+  [SerializeField] Transform ChooseName;
+
   private const string NAME_ID = "PLAYER_NAME";
 
   private void Awake(){
         PlayerName = GameObject.Find("PlayerText").GetComponent<TextMeshProUGUI>();
         ChooseNameButton = GameObject.Find("ChooseNameButton").GetComponent<TextMeshProUGUI>();
-
-        // If username is picked, to to main menu 
-        // TODO does this actually work?
+        Debug.Log("name is :" +  PlayerPrefs.GetString(NAME_ID));
         if (CheckIfUserNameIsChoosen()){
-            ChooseNameButton.GetComponent<Button>().onClick.Invoke();
+           History.gameObject.SetActive(false);
+           MainMenu.gameObject.SetActive(true);
+           ChooseName.gameObject.SetActive(false);
         }
     }
 
@@ -43,7 +48,7 @@ public class PlayerNamePersistance : MonoBehaviour
         return false;
     }
     else{
-        return false;
+        return true;
     }
   }
 

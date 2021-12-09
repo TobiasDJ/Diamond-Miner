@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -14,5 +16,12 @@ public class LevelManager : MonoBehaviour
 
     public void Awake(){
         instance = this;
+    }
+
+    public void Update(){
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            ScoresModel.ResetLocals();
+            SceneManager.LoadScene(0);
+        }
     }
 }

@@ -174,7 +174,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4c4de751529c624db55bcc672310939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerName: {fileID: 0}
+  History: {fileID: 959735394}
+  MainMenu: {fileID: 608757763}
+  ChooseName: {fileID: 189047881}
 --- !u!1 &236741159
 GameObject:
   m_ObjectHideFlags: 0
@@ -2582,7 +2584,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4c4de751529c624db55bcc672310939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerName: {fileID: 0}
+  History: {fileID: 0}
+  MainMenu: {fileID: 0}
+  ChooseName: {fileID: 0}
 --- !u!1 &1350056245
 GameObject:
   m_ObjectHideFlags: 0
