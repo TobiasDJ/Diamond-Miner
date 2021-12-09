@@ -15,24 +15,30 @@ public class PlayerDeath : MonoBehaviour
     }
 
     private async void OnCollisionEnter2D(Collision2D collision){
+        if (gameObject ==null || collision.gameObject == null)
+        {
+            return;
+        }
+        
         if(collision.gameObject.tag == "Spikes"){
             IncreaseDeathCountOnCurrentLvl();
             animator.SetBool("dead", true);
+            await Task.Delay(100);
+            animator.SetBool("dead", false);
 
-            await Task.Delay(200);
-            Destroy (gameObject);  
-            
-            LevelManager.instance.Respawn();
+            int x = Int32.Parse(PlayerPrefs.GetString("x")); 
+            int y = Int32.Parse(PlayerPrefs.GetString("y")); 
+            gameObject.transform.position = new Vector2(x,y);
         }
-
-        if(collision.gameObject.tag == "Enemy01"){
+        else if(collision.gameObject.tag == "Enemy01"){
             IncreaseDeathCountOnCurrentLvl();
             animator.SetBool("dead", true);
+            await Task.Delay(100);
+            animator.SetBool("dead", false);
 
-            await Task.Delay(200);
-            Destroy (gameObject); 
-
-            LevelManager.instance.Respawn();
+            int x = Int32.Parse(PlayerPrefs.GetString("x")); 
+            int y = Int32.Parse(PlayerPrefs.GetString("y")); 
+            gameObject.transform.position = new Vector2(x,y);
         }
         
     }

@@ -17,6 +17,7 @@ namespace Platformer.Mechanics
         public AudioClip jumpAudio;
         public AudioClip respawnAudio;
         public AudioClip ouchAudio;
+        public Vector2 startPos;
 
         /// <summary>
         /// Max horizontal speed of the player.
@@ -44,11 +45,18 @@ namespace Platformer.Mechanics
 
         void Awake()
         {
+            startPos = transform.position;
+            StoreStartPos();
             health = GetComponent<Health>();
             audioSource = GetComponent<AudioSource>();
             collider2d = GetComponent<Collider2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
             animator = GetComponent<Animator>();
+        }
+
+        private void StoreStartPos(){
+            PlayerPrefs.SetString("x", startPos.x.ToString()); 
+            PlayerPrefs.SetString("y", startPos.y.ToString());
         }
 
         protected override void Update()

@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7681674636929176826}
   - component: {fileID: 7681674636929176827}
-  - component: {fileID: 7681674636929176824}
-  - component: {fileID: 7681674636929176825}
   m_Layer: 0
   m_Name: Token
   m_TagString: Untagged
@@ -84,51 +82,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &7681674636929176824
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7681674636929176710}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.43
---- !u!114 &7681674636929176825
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7681674636929176710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92e2dcc1fb4364cdf887c66f39f76f82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tokenCollectAudio: {fileID: 8300000, guid: bf527d825758e5b4ca7b69f5a02d9a56, type: 3}
-  randomAnimationStartTime: 1
-  idleAnimation:
-  - {fileID: 21300000, guid: f619e92844e534f4ab5a65e23fe9d9d8, type: 3}
-  - {fileID: 21300000, guid: 063624461e0b0dd4e99552fa4e58ebfb, type: 3}
-  - {fileID: 21300000, guid: e37e2b2995f988d4ea7e9c16e11a4710, type: 3}
-  - {fileID: 21300000, guid: 77029d18a2886b441a6a888ae5eb4594, type: 3}
-  - {fileID: 21300000, guid: 3994a3efda00bde43b8ab8dcac8bc20b, type: 3}
-  - {fileID: 21300000, guid: 657d546b3e88dbc429fa96ccf4921130, type: 3}
-  - {fileID: 21300000, guid: c7a92e72f5e768440b16781bbf2f0714, type: 3}
-  collectedAnimation:
-  - {fileID: 21300000, guid: d7f3ba40c95624407a79329e1af8b953, type: 3}
-  - {fileID: 21300002, guid: d7f3ba40c95624407a79329e1af8b953, type: 3}
-  - {fileID: 21300004, guid: d7f3ba40c95624407a79329e1af8b953, type: 3}
-  - {fileID: 21300006, guid: d7f3ba40c95624407a79329e1af8b953, type: 3}
-  - {fileID: 21300008, guid: d7f3ba40c95624407a79329e1af8b953, type: 3}
-  - {fileID: 21300010, guid: d7f3ba40c95624407a79329e1af8b953, type: 3}
-  - {fileID: 21300012, guid: d7f3ba40c95624407a79329e1af8b953, type: 3}
-  - {fileID: 21300014, guid: d7f3ba40c95624407a79329e1af8b953, type: 3}
-  - {fileID: 21300016, guid: d7f3ba40c95624407a79329e1af8b953, type: 3}
