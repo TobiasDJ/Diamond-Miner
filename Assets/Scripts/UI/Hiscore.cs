@@ -12,7 +12,6 @@ using TMPro;
 
 public class Hiscore : MonoBehaviour
 {
-
     private Transform entryContainer;
     private Transform entryTemplate;
     private MongoDbStorage storage;
@@ -26,7 +25,6 @@ public class Hiscore : MonoBehaviour
 
         entryTemplate.gameObject.SetActive(false);
         storage = new MongoDbStorage();
-        storage.AddOrUpdate(new HiscoreModel("peter", 8200));
 
         List<HiscoreModel> top10Models =  storage.FetchTop15Scores();
         float templateSpacing = 50;
@@ -36,7 +34,6 @@ public class Hiscore : MonoBehaviour
             RectTransform entryRectTransform = entryTranform.GetComponent<RectTransform>();
             entryRectTransform.anchoredPosition = new Vector2(0, -templateSpacing*i);
             entryTranform.gameObject.SetActive(true);
-
 
             entryTranform.Find("NameText").GetComponent<TextMeshProUGUI>().SetText(top10Models[i].Name);
             entryTranform.Find("RankText").GetComponent<TextMeshProUGUI>().text =(i+1).ToString();
