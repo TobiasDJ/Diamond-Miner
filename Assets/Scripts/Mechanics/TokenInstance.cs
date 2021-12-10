@@ -14,6 +14,7 @@ namespace Platformer.Mechanics
     public class TokenInstance : MonoBehaviour
     {
         public AudioClip tokenCollectAudio;
+        public bool isActive;
         [Tooltip("If true, animation will start at a random position in the sequence.")]
         public bool randomAnimationStartTime = false;
         [Tooltip("List of frames that make up the animation.")]
@@ -29,11 +30,14 @@ namespace Platformer.Mechanics
         //active frame in animation, updated by the controller.
         internal int frame = 0;
         internal bool collected = false;
-        GameObject stoneDoor;
+        internal Animator animator;
+        [SerializeField] GameObject StoneDoor;
+        [SerializeField] GameObject Diamond;
         void Awake()
         {
             _renderer = GetComponent<SpriteRenderer>();
-            stoneDoor = GameObject.FindWithTag("StoneDoor");
+            animator = GetComponent<Animator>();
+
             if (randomAnimationStartTime)
                 frame = Random.Range(0, sprites.Length);
             sprites = idleAnimation;
@@ -46,20 +50,14 @@ namespace Platformer.Mechanics
             if (player != null) OnPlayerEnter(player);
         }
 
-        void OnPlayerEnter(PlayerController player)
+        public void OnPlayerEnter(PlayerController player)
         {
-            if (collected) return;
-            //disable the gameObject and remove it from the controller update list.
-            frame = 0;
-            Destroy(stoneDoor);
-            sprites = collectedAnimation;
-            
-            if (controller != null)
-                collected = true;
-            //send an event into the gameplay system to perform some behaviour.
-            var ev = Schedule<PlayerTokenCollision>();
-            ev.token = this;
-            ev.player = player;
+            //sprites = collectedAnimation;
+            StoneDoor.SetActive(false);
+  
+            Diamond.SetActive(false);
+            sprites = idleAnimation;
+
         }
     }
 }

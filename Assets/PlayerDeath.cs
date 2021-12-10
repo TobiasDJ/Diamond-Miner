@@ -9,6 +9,11 @@ using System.Threading.Tasks;
 public class PlayerDeath : MonoBehaviour
 {
     internal Animator animator;
+    public GameObject diamond;
+    public GameObject StoneDoor;
+    public Transform RespawnPointDiamond;
+    public Transform RespawnPointStoneDoor;
+
     void Awake()
     {
         animator = GetComponent<Animator>();
@@ -29,6 +34,14 @@ public class PlayerDeath : MonoBehaviour
             int x = Int32.Parse(PlayerPrefs.GetString("x")); 
             int y = Int32.Parse(PlayerPrefs.GetString("y")); 
             gameObject.transform.position = new Vector2(x,y);
+
+            // Respawn diamond and stone-door on player death
+            if(diamond.activeSelf == false){
+               StoneDoor.SetActive(true);
+               diamond.SetActive(true);
+            }
+
+
         }
         else if(collision.gameObject.tag == "Enemy01"){
             IncreaseDeathCountOnCurrentLvl();
