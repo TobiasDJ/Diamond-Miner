@@ -19670,10 +19670,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8614259742064540426, guid: 7d60c822c3f1b408ea7a00ecdb5e047a,
+        type: 3}
+      propertyPath: m_GravityScale
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8614259742064540431, guid: 7d60c822c3f1b408ea7a00ecdb5e047a,
         type: 3}
       propertyPath: movementSpeed
-      value: 15
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8614259742064540432, guid: 7d60c822c3f1b408ea7a00ecdb5e047a,
         type: 3}

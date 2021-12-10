@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
 
         
 
-        if(Input.GetButtonDown("Jump") && IsGrounded()){
+        if(Input.GetAxisRaw("Jump") == 1 && IsGrounded()){
             Jump();
         }
         if(Mathf.Abs(mx) > 0.05f){
