@@ -4224,6 +4224,31 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 8614259740747598814}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1384247503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384247502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f47bf8b417de7b42a523bb1768239d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 12
+  jumpForce: 20
+  feet: {fileID: 8614259740747598816}
+  rb: {fileID: 8614259740747598817}
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  moveWithMouse: 1
+  jumpAudio: {fileID: 8300000, guid: 67975c08d56ceb147bad38572d805aa8, type: 3}
+  respawnAudio: {fileID: 8300000, guid: e18959d46b63f3c4c8cc020a433cf848, type: 3}
+  ouchAudio: {fileID: 8300000, guid: 6c05149e5a2fba64ba172e25a61074b7, type: 3}
+  audioSource: {fileID: 8614259740747598815}
+  speed: 1.5
 --- !u!95 &1384247509
 Animator:
   serializedVersion: 3
@@ -19661,6 +19686,11 @@ PrefabInstance:
       objectReference: {fileID: 1901617671}
     - target: {fileID: 8614259742064540431, guid: 7d60c822c3f1b408ea7a00ecdb5e047a,
         type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8614259742064540431, guid: 7d60c822c3f1b408ea7a00ecdb5e047a,
+        type: 3}
       propertyPath: movementSpeed
       value: 12
       objectReference: {fileID: 0}
@@ -19726,3 +19756,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d60c822c3f1b408ea7a00ecdb5e047a, type: 3}
+--- !u!82 &8614259740747598815 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8614259742064540433, guid: 7d60c822c3f1b408ea7a00ecdb5e047a,
+    type: 3}
+  m_PrefabInstance: {fileID: 8614259740747598814}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8614259740747598816 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8614259741919468253, guid: 7d60c822c3f1b408ea7a00ecdb5e047a,
+    type: 3}
+  m_PrefabInstance: {fileID: 8614259740747598814}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &8614259740747598817 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 8614259742064540426, guid: 7d60c822c3f1b408ea7a00ecdb5e047a,
+    type: 3}
+  m_PrefabInstance: {fileID: 8614259740747598814}
+  m_PrefabAsset: {fileID: 0}
