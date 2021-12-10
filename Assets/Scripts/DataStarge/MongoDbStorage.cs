@@ -29,6 +29,8 @@ public class MongoDbStorage
                                             .SortByDescending(e => e.Score)
                                             .Limit(15)
                                             .ToList();
+                                            
+        top10Models.Reverse();
         return top10Models;
     }
 
