@@ -14,7 +14,7 @@ namespace Platformer.Mechanics
     public class TokenInstance : MonoBehaviour
     {
         public AudioClip tokenCollectAudio;
-        public bool isActive;
+        public bool preOpenStoneWall;
         [Tooltip("If true, animation will start at a random position in the sequence.")]
         public bool randomAnimationStartTime = false;
         [Tooltip("List of frames that make up the animation.")]
@@ -53,8 +53,12 @@ namespace Platformer.Mechanics
         public void OnPlayerEnter(PlayerController player)
         {
             //sprites = collectedAnimation;
-            StoneDoor.SetActive(false);
-  
+            if(preOpenStoneWall == true){
+                StoneDoor.SetActive(true);
+            }else{
+                StoneDoor.SetActive(false);
+            }
+
             Diamond.SetActive(false);
             sprites = idleAnimation;
 

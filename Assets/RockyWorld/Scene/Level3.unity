@@ -6470,7 +6470,7 @@ TilemapCollider2D:
   m_Material: {fileID: 6200000, guid: ba0f59735be29584d9519b388bf00a9d, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 1
+  m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
@@ -19382,6 +19382,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: StoneDoor
       objectReference: {fileID: 0}
+    - target: {fileID: 7008440478990738389, guid: 9b2d3ea8c30519c48a96e3f87fa423a4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7008440478990738390, guid: 9b2d3ea8c30519c48a96e3f87fa423a4,
         type: 3}
       propertyPath: m_RootOrder
@@ -19532,6 +19537,11 @@ PrefabInstance:
       objectReference: {fileID: 214210194}
     - target: {fileID: 6991895186919931192, guid: b308d91c52acbcb44bd2b7737bbe5942,
         type: 3}
+      propertyPath: preOpenStoneWall
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6991895186919931192, guid: b308d91c52acbcb44bd2b7737bbe5942,
+        type: 3}
       propertyPath: randomAnimationStartTime
       value: 1
       objectReference: {fileID: 0}
@@ -19604,6 +19614,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1384247511, guid: 7d60c822c3f1b408ea7a00ecdb5e047a, type: 3}
+      propertyPath: preOpenStoneWall
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8614259742064540426, guid: 7d60c822c3f1b408ea7a00ecdb5e047a,
         type: 3}
       propertyPath: m_GravityScale
@@ -19649,6 +19663,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7008440478990738389, guid: 9b2d3ea8c30519c48a96e3f87fa423a4,
         type: 3}
+    - target: {fileID: 8614259742064540428, guid: 7d60c822c3f1b408ea7a00ecdb5e047a,
+        type: 3}
+      propertyPath: preOpenStoneDoor
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8614259742064540428, guid: 7d60c822c3f1b408ea7a00ecdb5e047a,
         type: 3}
       propertyPath: RespawnPointDiamond

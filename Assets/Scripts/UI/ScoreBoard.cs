@@ -17,7 +17,7 @@ public class ScoreBoard : MonoBehaviour
         float templateSpacing = 1f;
         float startX = 3.795f;
         float startY = 10.16f;
-        int lvls = 5;
+        int lvls = 8;
         int currentLvl = SceneManager.GetActiveScene().buildIndex-1;
         for(int i = 0; i<lvls; i++){
             Transform entryTranform = Instantiate(LevelScoreTemplate.transform, ScoreBoardContainer.transform);
@@ -93,7 +93,7 @@ public static class ScoresModel
 
     public static void ResetLocals()
     {
-        int lvls = 5;
+        int lvls = 8;
         for(int i=0; i<lvls; i++){
             SetDeath(i,"0");
             SetTime(i, "0");

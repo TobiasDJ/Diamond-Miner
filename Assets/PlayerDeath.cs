@@ -11,6 +11,7 @@ public class PlayerDeath : MonoBehaviour
     internal Animator animator;
     public GameObject diamond;
     public GameObject StoneDoor;
+    public bool preOpenStoneDoor;
     public Transform RespawnPointDiamond;
     public Transform RespawnPointStoneDoor;
 
@@ -37,10 +38,13 @@ public class PlayerDeath : MonoBehaviour
 
             // Respawn diamond and stone-door on player death
             if(diamond.activeSelf == false){
-               StoneDoor.SetActive(true);
-               diamond.SetActive(true);
+                diamond.SetActive(true);
             }
-
+            if(preOpenStoneDoor == false){
+                StoneDoor.SetActive(true);
+            }else{
+                StoneDoor.SetActive(false);
+            }
 
         }
         else if(collision.gameObject.tag == "Enemy01"){
