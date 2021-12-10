@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public LayerMask groundLayers;
     float mx;
+    public bool invertX;
 
     public AudioClip jumpAudio;
     public AudioClip respawnAudio;
@@ -30,7 +31,14 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void Update(){
-        mx = Input.GetAxisRaw("Horizontal");
+        if(invertX == true){         
+            mx = Input.GetAxisRaw("Horizontal");
+            mx = mx*-1;
+        }else{
+            mx = Input.GetAxisRaw("Horizontal");
+        }
+
+        
 
         if(Input.GetButtonDown("Jump") && IsGrounded()){
             Jump();
