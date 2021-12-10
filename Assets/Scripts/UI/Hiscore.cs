@@ -27,7 +27,7 @@ public class Hiscore : MonoBehaviour
         storage = new MongoDbStorage();
 
         List<HiscoreModel> top10Models =  storage.FetchTop15Scores();
-        float templateSpacing = 50;
+        float templateSpacing = 20;
         int rows = 15;
         for(int i = 0; i<rows; i++){
             Transform entryTranform = Instantiate(entryTemplate, entryContainer);
