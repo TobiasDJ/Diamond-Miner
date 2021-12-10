@@ -26,11 +26,13 @@ public class PlayerNamePersistance : MonoBehaviour
         PlayerName = GameObject.Find("PlayerText").GetComponent<TextMeshProUGUI>();
         ChooseNameButton = GameObject.Find("ChooseNameButton").GetComponent<TextMeshProUGUI>();
         Debug.Log("name is :" +  PlayerPrefs.GetString(NAME_ID));
-        if (CheckIfUserNameIsChoosen()){
+        
+        /*if (CheckIfUserNameIsChoosen()){
            History.gameObject.SetActive(false);
            MainMenu.gameObject.SetActive(true);
            ChooseName.gameObject.SetActive(false);
         }
+        */
     }
 
 

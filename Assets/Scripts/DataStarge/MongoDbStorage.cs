@@ -9,36 +9,35 @@ using MongoDB.Bson;
 using Debug = UnityEngine.Debug;
 using Random = UnityEngine.Random;
 
-public class MongoDbStorage 
+public class MongoDbStorage : MonoBehaviour
 {
 
     // Start is called before the first frame update
 
     private MongoClient dbClient;
     private IMongoDatabase db;
-    public  MongoDbStorage()
-    {
+
+    public MongoDbStorage(){
         dbClient = new MongoClient("mongodb://root:example@62.107.0.222:27017");
         db = dbClient.GetDatabase("diamondminer");
     }
 
+
     public List<HiscoreModel> FetchTop15Scores(){
         var ranks = db.GetCollection<HiscoreModel>("ranks");
 
-        List<HiscoreModel> top10Models = ranks.Find(e => true)
-                                            .SortByDescending(e => e.Score)
-                                            .Limit(15)
-                                            .ToList();
-                                            
-        top10Models.Reverse();
-        return top10Models;
+        var list = ranks.Find(FilterDefinition<HiscoreModel>.Empty ).Limit(15).SortBy(i=> i.Score).ToList();
+
+        return list;
     }
 
     public void AddOrUpdate(HiscoreModel modelToAdd){
+
         var ranks = db.GetCollection<HiscoreModel>("ranks");
         bool exists = ranks.Find(_ => _.Name == modelToAdd.Name).Any();
 
         if(exists){
+            Debug.Log("Player exits - Updating");
             var filter = Builders<HiscoreModel>.Filter.Eq("name", modelToAdd.Name);
             HiscoreModel model = ranks.Find(filter).Limit(1).ToList()[0];
             if(modelToAdd.Score > model.Score ){
@@ -50,13 +49,14 @@ public class MongoDbStorage
                 };
                 var updateResult = ranks.UpdateOne(filter2, update, updateOptions);
             }
-            else
-            {   
+        }
+        else
+        {   
                 var ranksDocs = db.GetCollection<BsonDocument>("ranks");
                 ranksDocs.InsertOne(ModelToBsonDocument(modelToAdd));
-            }
         }
     }
+    
 
     public void GerneateTestDatabase(){
       

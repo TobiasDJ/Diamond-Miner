@@ -14,9 +14,9 @@ public class Hiscore : MonoBehaviour
 {
     private Transform entryContainer;
     private Transform entryTemplate;
-    private MongoDbStorage storage;
     
 
+    private MongoDbStorage storage = new MongoDbStorage();
 
     // Called when hiscore is showed
     private void Awake(){
@@ -24,7 +24,6 @@ public class Hiscore : MonoBehaviour
         entryTemplate = entryContainer.Find("HiscoreEntryTemplate");
 
         entryTemplate.gameObject.SetActive(false);
-        storage = new MongoDbStorage();
 
         List<HiscoreModel> top10Models =  storage.FetchTop15Scores();
         float templateSpacing = 20;

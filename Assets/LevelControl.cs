@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelControl : MonoBehaviour
 {   
-
+    private MongoDbStorage storage = new MongoDbStorage();
 
    void OnTriggerEnter2D(Collider2D other)
     {
@@ -15,7 +15,7 @@ public class LevelControl : MonoBehaviour
         {
             // final stage
             if(SceneManager.GetActiveScene().buildIndex == 8){
-                MongoDbStorage storage = new MongoDbStorage();
+
                 int totalScore = 0;
                 int lvls = 8;
                 int death_multiply = 100;
@@ -30,10 +30,12 @@ public class LevelControl : MonoBehaviour
                 storage.AddOrUpdate(postModel);
                 SceneManager.LoadScene(0);
             }
-            Debug.Log($"Going into lvl : {SceneManager.GetActiveScene().buildIndex}");
-
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
-            Debug.Log("Level switch to: " + SceneManager.GetActiveScene().buildIndex.ToString());
+            else{
+                Debug.Log($"Going into lvl : {SceneManager.GetActiveScene().buildIndex}");
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
+                Debug.Log("Level switch to: " + SceneManager.GetActiveScene().buildIndex.ToString());
+            }
+           
         }
     }
 }
