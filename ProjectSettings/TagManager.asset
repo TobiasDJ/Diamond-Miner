@@ -10,6 +10,7 @@ TagManager:
   - Ground
   - StoneDoor
   - Diamond
+  - InvisibleDoor
   layers:
   - Default
   - TransparentFX
