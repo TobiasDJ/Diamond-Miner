@@ -6,15 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class LevelControl : MonoBehaviour
 {   
-   
-   public string levelName;
 
 
    void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene(levelName);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
+            Debug.Log("Level switch to: " + SceneManager.GetActiveScene().buildIndex.ToString());
         }
     }
 }

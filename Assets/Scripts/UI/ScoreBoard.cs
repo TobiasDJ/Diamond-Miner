@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 using Debug = UnityEngine.Debug;
 using UnityEngine.SceneManagement;
 
@@ -44,7 +45,10 @@ public class ScoreBoard : MonoBehaviour
             deathUpdater.SetIndex(i);
 
             if(!string.IsNullOrEmpty(ScoresModel.GetTime(i))){
-                entryTranform.Find("CurrentTimeText").GetComponent<TextMeshProUGUI>().SetText(ScoresModel.GetTime(i));
+                var timeEntry = entryTranform.Find("CurrentTimeText").GetComponent<TextMeshProUGUI>();
+                DateTime date1 = new DateTime();
+                date1 = date1.AddSeconds(Int32.Parse(ScoresModel.GetTime(i)));
+                timeEntry.text = date1.ToString("mm:ss");
             }
             else{
                 ScoresModel.SetTime(i, "0");

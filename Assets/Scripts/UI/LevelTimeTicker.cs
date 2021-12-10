@@ -25,7 +25,7 @@ public class LevelTimeTicker : MonoBehaviour
         if(isRunning){
             currentTime += 1*Time.deltaTime;  
             int currentLvl = SceneManager.GetActiveScene().buildIndex-1;
-            ScoresModel.SetTime(currentLvl, currentTime.ToString());
+            ScoresModel.SetTime(currentLvl, currentTime.ToString("0"));
             DateTime date1 = new DateTime();
             date1 = date1.AddSeconds(currentTime);
             CurrentTimeText.text = date1.ToString("mm:ss");
