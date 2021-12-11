@@ -34,9 +34,24 @@ public class Hiscore : MonoBehaviour
             entryRectTransform.anchoredPosition = new Vector2(0, -templateSpacing*i);
             entryTranform.gameObject.SetActive(true);
 
-            entryTranform.Find("NameText").GetComponent<TextMeshProUGUI>().SetText(top10Models[i].Name);
-            entryTranform.Find("RankText").GetComponent<TextMeshProUGUI>().text =(i+1).ToString();
-            entryTranform.Find("ScoreText").GetComponent<TextMeshProUGUI>().text = top10Models[i].Score.ToString();
+           entryTranform.Find("NameText").GetComponent<TextMeshProUGUI>().SetText(top10Models[i].Name);
+            var rank = entryTranform.Find("RankText").GetComponent<TextMeshProUGUI>().text =(i+1).ToString();
+           entryTranform.Find("ScoreText").GetComponent<TextMeshProUGUI>().text = top10Models[i].Score.ToString();
+
+            if(rank == "1"){
+                entryTranform.Find("NameText").GetComponent<TextMeshProUGUI>().color = new Color32(255, 108, 0, 255);
+                entryTranform.Find("RankText").GetComponent<TextMeshProUGUI>().color = new Color32(255, 108, 0, 255);
+                entryTranform.Find("ScoreText").GetComponent<TextMeshProUGUI>().color = new Color32(255, 108, 0, 255);
+            }if(rank == "2"){
+                entryTranform.Find("NameText").GetComponent<TextMeshProUGUI>().color = new Color32(255, 255, 0, 255);
+                entryTranform.Find("RankText").GetComponent<TextMeshProUGUI>().color = new Color32(255, 255, 0, 255);
+                entryTranform.Find("ScoreText").GetComponent<TextMeshProUGUI>().color = new Color32(255, 255, 0, 255);
+            }if(rank == "3"){
+                entryTranform.Find("NameText").GetComponent<TextMeshProUGUI>().color = new Color32(47, 200, 29, 255);
+                entryTranform.Find("RankText").GetComponent<TextMeshProUGUI>().color = new Color32(47, 200, 29, 255);
+                entryTranform.Find("ScoreText").GetComponent<TextMeshProUGUI>().color = new Color32(47, 200, 29, 255);
+            }
+            
         }
 
     }
