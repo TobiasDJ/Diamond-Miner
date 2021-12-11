@@ -33,6 +33,10 @@ public class ScoreBoard : MonoBehaviour
 
             ScoresModel.SetLevel(i, (i+1).ToString());
             entryTranform.Find("LevelText").GetComponent<TextMeshProUGUI>().SetText(ScoresModel.GetLevel(i));
+            TextMeshProUGUI LevelText = entryTranform.Find("LevelText").GetComponent<TextMeshProUGUI>();
+            if(i == currentLvl){
+                LevelText.color = new Color32(255, 191 ,0, 255);
+            }
             
             if(!string.IsNullOrEmpty(ScoresModel.GetDeath(i))){
                 entryTranform.Find("CurrentDeathsText").GetComponent<TextMeshProUGUI>().SetText(ScoresModel.GetDeath(i));
@@ -42,6 +46,10 @@ public class ScoreBoard : MonoBehaviour
                 entryTranform.Find("CurrentDeathsText").GetComponent<TextMeshProUGUI>().SetText(ScoresModel.GetDeath(i));
             }
             var deathUpdater =  entryTranform.Find("CurrentDeathsText").gameObject.GetComponent<DeathUpdater>();
+            TextMeshProUGUI CurrentDeathsText = entryTranform.Find("CurrentDeathsText").GetComponent<TextMeshProUGUI>();
+            if(i == currentLvl){
+                CurrentDeathsText.color = new Color32(255, 191 ,0, 255);
+            }
             deathUpdater.SetIndex(i);
 
             if(!string.IsNullOrEmpty(ScoresModel.GetTime(i))){

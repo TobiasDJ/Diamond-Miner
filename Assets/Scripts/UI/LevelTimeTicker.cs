@@ -29,6 +29,7 @@ public class LevelTimeTicker : MonoBehaviour
             DateTime date1 = new DateTime();
             date1 = date1.AddSeconds(currentTime);
             CurrentTimeText.text = date1.ToString("mm:ss");
+            CurrentTimeText.color = new Color32(255, 191 ,0, 255);
         }
     }
 
