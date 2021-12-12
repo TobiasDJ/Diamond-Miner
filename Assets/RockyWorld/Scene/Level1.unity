@@ -4254,6 +4254,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4013fa5d2bead8d47b37e7c25c586b6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelCompleteAudio: {fileID: 8300000, guid: 50290ef1301ad2a4dbd6bddb6fa5c353, type: 3}
+  audioSource: {fileID: 1402204126}
 --- !u!1 &1317684831
 GameObject:
   m_ObjectHideFlags: 0
@@ -4357,6 +4359,12 @@ Canvas:
 --- !u!1 &1384247502 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8614259742064540432, guid: 7d60c822c3f1b408ea7a00ecdb5e047a,
+    type: 3}
+  m_PrefabInstance: {fileID: 8614259740747598814}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1384247503 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8614259742064540433, guid: 7d60c822c3f1b408ea7a00ecdb5e047a,
     type: 3}
   m_PrefabInstance: {fileID: 8614259740747598814}
   m_PrefabAsset: {fileID: 0}
@@ -19761,6 +19769,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7008440478990738389, guid: 9b2d3ea8c30519c48a96e3f87fa423a4,
         type: 3}
+    - target: {fileID: 8614259742064540428, guid: 7d60c822c3f1b408ea7a00ecdb5e047a,
+        type: 3}
+      propertyPath: deathAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: e18959d46b63f3c4c8cc020a433cf848, type: 3}
+    - target: {fileID: 8614259742064540428, guid: 7d60c822c3f1b408ea7a00ecdb5e047a,
+        type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1384247503}
     - target: {fileID: 8614259742064540428, guid: 7d60c822c3f1b408ea7a00ecdb5e047a,
         type: 3}
       propertyPath: DiamondPrefab
