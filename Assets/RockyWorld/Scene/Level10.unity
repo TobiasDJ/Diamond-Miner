@@ -20421,6 +20421,16 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 8614259742064540428, guid: 7d60c822c3f1b408ea7a00ecdb5e047a,
         type: 3}
+      propertyPath: deathAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: e18959d46b63f3c4c8cc020a433cf848, type: 3}
+    - target: {fileID: 8614259742064540428, guid: 7d60c822c3f1b408ea7a00ecdb5e047a,
+        type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 8614259740747598815}
+    - target: {fileID: 8614259742064540428, guid: 7d60c822c3f1b408ea7a00ecdb5e047a,
+        type: 3}
       propertyPath: DiamondPrefab
       value: 
       objectReference: {fileID: 6991895186919931193, guid: b308d91c52acbcb44bd2b7737bbe5942,
@@ -20520,3 +20530,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d60c822c3f1b408ea7a00ecdb5e047a, type: 3}
+--- !u!82 &8614259740747598815 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8614259742064540433, guid: 7d60c822c3f1b408ea7a00ecdb5e047a,
+    type: 3}
+  m_PrefabInstance: {fileID: 8614259740747598814}
+  m_PrefabAsset: {fileID: 0}

@@ -14,9 +14,13 @@ public class PlayerDeath : MonoBehaviour
     public bool preOpenStoneDoor;
     public Transform RespawnPointDiamond;
     public Transform RespawnPointStoneDoor;
+    public AudioClip deathAudio;
+    /*internal new*/
+    public AudioSource audioSource;
 
     void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
     }
 
@@ -26,7 +30,10 @@ public class PlayerDeath : MonoBehaviour
             return;
         }
         
-        if(collision.gameObject.tag == "Spikes"){
+        if(collision.gameObject.tag == "Spikes")
+        {
+            audioSource.clip = deathAudio;
+            audioSource.Play();
             IncreaseDeathCountOnCurrentLvl();
             animator.SetBool("dead", true);
             await Task.Delay(100);
@@ -48,6 +55,8 @@ public class PlayerDeath : MonoBehaviour
 
         }
         else if(collision.gameObject.tag == "Enemy01"){
+            audioSource.clip = deathAudio;
+            audioSource.Play();
             IncreaseDeathCountOnCurrentLvl();
             animator.SetBool("dead", true);
             await Task.Delay(100);
