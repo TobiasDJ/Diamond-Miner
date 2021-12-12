@@ -15,6 +15,8 @@ namespace Platformer.Mechanics
     {
         public PatrolPath path;
         public AudioClip ouch;
+        public int walkSpeed;
+
 
         internal PatrolPath.Mover mover;
         internal AnimationController control;
@@ -34,13 +36,14 @@ namespace Platformer.Mechanics
             animator = GetComponent<Animator>();
         }
 
+
         public async void OnCollisionEnter2D(Collision2D collision)
         {
             var player = collision.gameObject.GetComponent<PlayerController>();
             if (player != null)
             {
                 animator.SetBool("attack", true);
-                await Task.Delay(1000);
+                await Task.Delay(500);
                 animator.SetBool("attack", false);
             }
         } 

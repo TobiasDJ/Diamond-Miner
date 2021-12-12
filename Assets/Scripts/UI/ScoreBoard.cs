@@ -9,18 +9,19 @@ using UnityEngine.SceneManagement;
 
 public class ScoreBoard : MonoBehaviour
 {
+    Transform entryTranform;
     [SerializeField]  Canvas ScoreBoardContainer;
     [SerializeField]  Canvas LevelScoreTemplate;
 
-   private void Awake(){
+    private void Awake(){
 
-        float templateSpacing = 1f;
+        float templateSpacing = 0.5f;
         float startX = 3.795f;
         float startY = 10.16f;
-        int lvls = 8;
+        int lvls = 11;
         int currentLvl = SceneManager.GetActiveScene().buildIndex-1;
         for(int i = 0; i<lvls; i++){
-            Transform entryTranform = Instantiate(LevelScoreTemplate.transform, ScoreBoardContainer.transform);
+            entryTranform = Instantiate(LevelScoreTemplate.transform, ScoreBoardContainer.transform);
             RectTransform entryRectTransform = entryTranform.GetComponent<RectTransform>();
             entryRectTransform.anchoredPosition = new Vector2(startX, startY-(templateSpacing*i));
             entryTranform.gameObject.SetActive(true);
@@ -32,7 +33,12 @@ public class ScoreBoard : MonoBehaviour
             }
 
             ScoresModel.SetLevel(i, (i+1).ToString());
-            entryTranform.Find("LevelText").GetComponent<TextMeshProUGUI>().SetText(ScoresModel.GetLevel(i));
+            if(i == 11){
+                entryTranform.Find("LevelText").GetComponent<TextMeshProUGUI>().SetText(":skull:");
+            }else{
+                entryTranform.Find("LevelText").GetComponent<TextMeshProUGUI>().SetText(ScoresModel.GetLevel(i));
+            }
+
             TextMeshProUGUI LevelText = entryTranform.Find("LevelText").GetComponent<TextMeshProUGUI>();
             if(i == currentLvl){
                 LevelText.color = new Color32(255, 191 ,0, 255);
@@ -64,6 +70,13 @@ public class ScoreBoard : MonoBehaviour
             }
         }
 
+    }
+    public void Update(){
+        if(Input.GetKeyDown(KeyCode.T)){
+            SceneManager.LoadScene("Level"+1);
+            ScoresModel.ResetLocals();
+            //((entryTranform.Find("CurrentDeathsText").GetComponent<TextMeshProUGUI>().SetText(ScoresModel.GetDeath(currentLvl));
+        }
     }
 }
 
@@ -101,7 +114,7 @@ public static class ScoresModel
 
     public static void ResetLocals()
     {
-        int lvls = 8;
+        int lvls = 11;
         for(int i=0; i<lvls; i++){
             SetDeath(i,"0");
             SetTime(i, "0");

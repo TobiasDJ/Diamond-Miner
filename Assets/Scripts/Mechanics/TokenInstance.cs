@@ -1,6 +1,12 @@
 using Platformer.Gameplay;
 using UnityEngine;
 using static Platformer.Core.Simulation;
+using System.Threading.Tasks;
+using TMPro;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using Random=UnityEngine.Random;
 
 
 namespace Platformer.Mechanics
@@ -14,6 +20,10 @@ namespace Platformer.Mechanics
     public class TokenInstance : MonoBehaviour
     {
         public AudioClip tokenCollectAudio;
+        [SerializeField] bool lastMap;
+        [SerializeField] TextMeshProUGUI Attempt1TimeText;
+        [SerializeField] TextMeshProUGUI Attempt2TimeText;
+        [SerializeField] TextMeshProUGUI Attempt3TimeText;
         public bool preOpenStoneWall;
         [Tooltip("If true, animation will start at a random position in the sequence.")]
         public bool randomAnimationStartTime = false;
@@ -29,16 +39,26 @@ namespace Platformer.Mechanics
         internal TokenController controller;
         //active frame in animation, updated by the controller.
         internal int frame = 0;
+        internal bool LORT;
         internal bool collected = false;
         internal Animator animator;
         [SerializeField] GameObject StoneDoor;
         [SerializeField] GameObject Diamond;
+        float startTime = 4f;
+
+        void Update(){
+            if(LORT == true){
+             Debug.Log("set START TIMER");
+                StartTimer();
+            }
+        }
+        
         void Awake()
         {
             _renderer = GetComponent<SpriteRenderer>();
             animator = GetComponent<Animator>();
 
-            if (randomAnimationStartTime)
+           if (randomAnimationStartTime)
                 frame = Random.Range(0, sprites.Length);
             sprites = idleAnimation;
         }
@@ -48,6 +68,29 @@ namespace Platformer.Mechanics
             //only exectue OnPlayerEnter if the player collides with this token.
             var player = other.gameObject.GetComponent<PlayerController>();
             if (player != null) OnPlayerEnter(player);
+
+            if(lastMap){
+                StoneDoor.SetActive(false);
+                Diamond.SetActive(false);
+
+                LORT = true;
+                Debug.Log("set TRUE");
+            }
+        }
+
+        public async Task StartTimer(){
+            startTime -= 1*Time.deltaTime;  
+            DateTime date1 = new DateTime();
+            date1 = date1.AddSeconds(startTime);
+            Attempt1TimeText.text = date1.ToString("mm:ss");
+            Attempt1TimeText.color = new Color32(255, 191 ,0, 255);
+
+            //4 seconds to make it
+            await Task.Delay(2500);
+
+            StoneDoor.SetActive(true);
+            Diamond.SetActive(true);
+            LORT = false;
         }
 
         public void OnPlayerEnter(PlayerController player)
@@ -55,13 +98,14 @@ namespace Platformer.Mechanics
             //sprites = collectedAnimation;
             if(preOpenStoneWall == true){
                 StoneDoor.SetActive(true);
-            }else{
+            }if(lastMap == false){
                 StoneDoor.SetActive(false);
+                Diamond.SetActive(false);
             }
-
-            Diamond.SetActive(false);
+         
             sprites = idleAnimation;
-
         }
+        
+
     }
 }

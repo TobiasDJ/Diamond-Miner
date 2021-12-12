@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
+using UnityEngine.SceneManagement;
 
 
 public class PlayerMovement : MonoBehaviour
@@ -13,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundLayers;
     float mx;
     public bool invertX;
+    public bool invertY;
+    public bool disableBackKey;
 
     public AudioClip jumpAudio;
     public AudioClip respawnAudio;
@@ -21,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     SpriteRenderer spriteRenderer;
     internal Animator animator;
     /*internal new*/ public AudioSource audioSource;
+ 
 
     void Awake()
     {
@@ -29,13 +33,19 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         animator.SetBool("dead", false);
     }
-
+    
     private void Update(){
+
+
         if(invertX == true){         
             mx = Input.GetAxisRaw("Horizontal");
             mx = mx*-1;
-        }else{
+        }if(invertX == false && disableBackKey == false){
             mx = Input.GetAxisRaw("Horizontal");
+        }
+        if(disableBackKey == true){
+            mx = Input.GetAxisRaw("Horizontal");
+            if(mx < 0){mx = mx * 0;}
         }
 
         
@@ -64,7 +74,11 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump(){
         Vector2 movement = new Vector2(rb.velocity.x, jumpForce);
-        rb.velocity = movement;
+        if(invertY == true){         
+            rb.velocity = movement*-1;
+        }else{
+            rb.velocity = movement;
+        }
     }
 
     public bool IsGrounded(){

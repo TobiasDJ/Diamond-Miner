@@ -14,10 +14,10 @@ public class LevelControl : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             // final stage
-            if(SceneManager.GetActiveScene().buildIndex == 8){
+            if(SceneManager.GetActiveScene().buildIndex == 11){
 
                 int totalScore = 0;
-                int lvls = 8;
+                int lvls = 11;
                 int death_multiply = 100;
                 int sec_multyply = 10;
                 for (int i = 0; i<lvls; i++){
