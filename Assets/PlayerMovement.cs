@@ -74,7 +74,9 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump(){
         Vector2 movement = new Vector2(rb.velocity.x, jumpForce);
-        if(invertY == true){         
+        audioSource.clip = jumpAudio;
+        audioSource.Play();
+        if (invertY == true){         
             rb.velocity = movement*-1;
         }else{
             rb.velocity = movement;
