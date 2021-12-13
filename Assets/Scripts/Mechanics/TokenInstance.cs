@@ -20,7 +20,6 @@ namespace Platformer.Mechanics
     public class TokenInstance : MonoBehaviour
     {
         public AudioClip tokenCollectAudio;
-        [SerializeField] bool lastMap;
         [SerializeField] TextMeshProUGUI Attempt1TimeText;
         [SerializeField] TextMeshProUGUI Attempt2TimeText;
         [SerializeField] TextMeshProUGUI Attempt3TimeText;
@@ -39,19 +38,12 @@ namespace Platformer.Mechanics
         internal TokenController controller;
         //active frame in animation, updated by the controller.
         internal int frame = 0;
-        internal bool LORT;
         internal bool collected = false;
         internal Animator animator;
         [SerializeField] GameObject StoneDoor;
         [SerializeField] GameObject Diamond;
         float startTime = 4f;
 
-        void Update(){
-            if(LORT == true){
-             Debug.Log("set START TIMER");
-                StartTimer();
-            }
-        }
         
         void Awake()
         {
@@ -68,29 +60,6 @@ namespace Platformer.Mechanics
             //only exectue OnPlayerEnter if the player collides with this token.
             var player = other.gameObject.GetComponent<PlayerController>();
             if (player != null) OnPlayerEnter(player);
-
-            if(lastMap){
-                StoneDoor.SetActive(false);
-                Diamond.SetActive(false);
-
-                LORT = true;
-                Debug.Log("set TRUE");
-            }
-        }
-
-        public async Task StartTimer(){
-            startTime -= 1*Time.deltaTime;  
-            DateTime date1 = new DateTime();
-            date1 = date1.AddSeconds(startTime);
-            Attempt1TimeText.text = date1.ToString("mm:ss");
-            Attempt1TimeText.color = new Color32(255, 191 ,0, 255);
-
-            //4 seconds to make it
-            await Task.Delay(2500);
-
-            StoneDoor.SetActive(true);
-            Diamond.SetActive(true);
-            LORT = false;
         }
 
         public void OnPlayerEnter(PlayerController player)
@@ -98,7 +67,8 @@ namespace Platformer.Mechanics
             //sprites = collectedAnimation;
             if(preOpenStoneWall == true){
                 StoneDoor.SetActive(true);
-            }if(lastMap == false){
+                Diamond.SetActive(false);
+            }else{
                 StoneDoor.SetActive(false);
                 Diamond.SetActive(false);
             }

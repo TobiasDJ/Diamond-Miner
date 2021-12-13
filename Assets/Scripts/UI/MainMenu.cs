@@ -22,7 +22,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame(){
         ScoresModel.ResetLocals();
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     
