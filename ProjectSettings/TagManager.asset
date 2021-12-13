@@ -12,6 +12,7 @@ TagManager:
   - Diamond
   - InvisibleDoor
   - Music
+  - game_reset
   layers:
   - Default
   - TransparentFX

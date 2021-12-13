@@ -6,10 +6,12 @@ using TMPro;
 using System;
 using Debug = UnityEngine.Debug;
 using UnityEngine.SceneManagement;
+using System.Threading.Tasks;
 
 public class ScoreBoard : MonoBehaviour
 {
     Transform entryTranform;
+     TextMeshProUGUI resetText;
     [SerializeField]  Canvas ScoreBoardContainer;
     [SerializeField]  Canvas LevelScoreTemplate;
 
@@ -19,20 +21,25 @@ public class ScoreBoard : MonoBehaviour
         float startX = 3.795f;
         float startY = 10.16f;
         int lvls = 11;
+        
         int currentLvl = SceneManager.GetActiveScene().buildIndex-1;
         for(int i = 0; i<lvls; i++){
             entryTranform = Instantiate(LevelScoreTemplate.transform, ScoreBoardContainer.transform);
             RectTransform entryRectTransform = entryTranform.GetComponent<RectTransform>();
             entryRectTransform.anchoredPosition = new Vector2(startX, startY-(templateSpacing*i));
             entryTranform.gameObject.SetActive(true);
-            
+
+            resetText = entryTranform.Find("game_reset").GetComponent<TextMeshProUGUI>();
+            resetText.enabled = false;
+
+
             // Start timer of current lvl
             if(i== currentLvl){
                 var script =  entryTranform.Find("CurrentTimeText").gameObject.GetComponent<LevelTimeTicker>();
                 script.StartTimer();
             }
-
             ScoresModel.SetLevel(i, (i+1).ToString());
+
             if(i == 11){
                 entryTranform.Find("LevelText").GetComponent<TextMeshProUGUI>().SetText(":skull:");
             }else{
@@ -71,11 +78,13 @@ public class ScoreBoard : MonoBehaviour
         }
 
     }
-    public void Update(){
-        if(Input.GetKeyDown(KeyCode.T)){
+    public async void Update(){
+        if(Input.GetKeyDown(KeyCode.R)){
+            resetText.enabled = true;
+            await Task.Delay(50);
             SceneManager.LoadScene("Level"+1);
             ScoresModel.ResetLocals();
-            //((entryTranform.Find("CurrentDeathsText").GetComponent<TextMeshProUGUI>().SetText(ScoresModel.GetDeath(currentLvl));
+
         }
     }
 }
