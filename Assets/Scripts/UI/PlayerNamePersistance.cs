@@ -13,7 +13,7 @@ using Debug = UnityEngine.Debug;
 public class PlayerNamePersistance : MonoBehaviour
 {
 
-  TextMeshProUGUI PlayerName;
+  static TextMeshProUGUI PlayerName;
   TextMeshProUGUI ChooseNameButton;
 
   [SerializeField] Transform History;
@@ -43,6 +43,10 @@ public class PlayerNamePersistance : MonoBehaviour
         PlayerPrefs.SetString(NAME_ID,PlayerName.text); 
         Debug.Log(PlayerPrefs.GetString(NAME_ID).ToString());
       }
+  }
+
+  public static string getPlayername(){
+    return PlayerName.text;
   }
 
   public bool CheckIfUserNameIsChoosen(){

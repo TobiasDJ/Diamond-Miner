@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 public class ScoreBoard : MonoBehaviour
 {
     Transform entryTranform;
-     TextMeshProUGUI resetText;
+    TextMeshProUGUI resetText;
     [SerializeField]  Canvas ScoreBoardContainer;
     [SerializeField]  Canvas LevelScoreTemplate;
 
@@ -20,7 +20,7 @@ public class ScoreBoard : MonoBehaviour
         float templateSpacing = 0.5f;
         float startX = 3.795f;
         float startY = 10.16f;
-        int lvls = 11;
+        int lvls = 10;
         
         int currentLvl = SceneManager.GetActiveScene().buildIndex-1;
         for(int i = 0; i<lvls; i++){
@@ -123,7 +123,7 @@ public static class ScoresModel
 
     public static void ResetLocals()
     {
-        int lvls = 11;
+        int lvls = 10;
         for(int i=0; i<lvls; i++){
             SetDeath(i,"0");
             SetTime(i, "0");

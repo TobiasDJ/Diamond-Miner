@@ -4183,8 +4183,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 1526726655
-  m_fontColor: {r: 1, g: 1, b: 1, a: 0.3529412}
+    rgba: 2416379763
+  m_fontColor: {r: 0.4528302, g: 0.027767902, b: 0.027767902, a: 0.5647059}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -20735,6 +20735,11 @@ PrefabInstance:
       propertyPath: RespawnPointStoneDoor
       value: 
       objectReference: {fileID: 1901617671}
+    - target: {fileID: 8614259742064540431, guid: 7d60c822c3f1b408ea7a00ecdb5e047a,
+        type: 3}
+      propertyPath: invertX
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8614259742064540431, guid: 7d60c822c3f1b408ea7a00ecdb5e047a,
         type: 3}
       propertyPath: movementSpeed

@@ -13,6 +13,7 @@ TagManager:
   - InvisibleDoor
   - Music
   - game_reset
+  - usernameLoggedIn
   layers:
   - Default
   - TransparentFX

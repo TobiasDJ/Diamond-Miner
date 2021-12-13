@@ -14,10 +14,10 @@ public class LevelControl : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             // final stage
-            if(SceneManager.GetActiveScene().buildIndex == 11){
+            if(SceneManager.GetActiveScene().buildIndex == 10){
 
                 int totalScore = 0;
-                int lvls = 11;
+                int lvls = 10;
                 int death_multiply = 100;
                 int sec_multyply = 10;
                 for (int i = 0; i<lvls; i++){
@@ -28,7 +28,7 @@ public class LevelControl : MonoBehaviour
                 Debug.Log($"Name is {name}, score is : {totalScore}");
                 var postModel = new HiscoreModel( PlayerPrefs.GetString("PLAYER_NAME"), totalScore);
                 storage.AddOrUpdate(postModel);
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene(11);
             }
             else{
                 Debug.Log($"Going into lvl : {SceneManager.GetActiveScene().buildIndex}");
