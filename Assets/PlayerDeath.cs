@@ -15,6 +15,7 @@ public class PlayerDeath : MonoBehaviour
     public Transform RespawnPointDiamond;
     public Transform RespawnPointStoneDoor;
     public AudioClip deathAudio;
+    public bool islvl9;
     /*internal new*/
     public AudioSource audioSource;
 
@@ -39,9 +40,14 @@ public class PlayerDeath : MonoBehaviour
             await Task.Delay(100);
             animator.SetBool("dead", false);
 
-            int x = Int32.Parse(PlayerPrefs.GetString("x")); 
-            int y = Int32.Parse(PlayerPrefs.GetString("y")); 
-            gameObject.transform.position = new Vector2(x,y);
+            // Dirty fix!
+            if(!islvl9){
+                int x = Int32.Parse(PlayerPrefs.GetString("x")); 
+                int y = Int32.Parse(PlayerPrefs.GetString("y")); 
+                gameObject.transform.position = new Vector2(x,y);
+            }else{
+                gameObject.transform.position = new Vector2(35,-6.8f);
+            }
 
             // Respawn diamond and stone-door on player death
             if(diamond.activeSelf == false){
@@ -52,7 +58,6 @@ public class PlayerDeath : MonoBehaviour
             }else{
                 StoneDoor.SetActive(false);
             }
-
         }
         else if(collision.gameObject.tag == "Enemy01"){
             audioSource.clip = deathAudio;
@@ -62,11 +67,15 @@ public class PlayerDeath : MonoBehaviour
             await Task.Delay(100);
             animator.SetBool("dead", false);
 
-            int x = Int32.Parse(PlayerPrefs.GetString("x")); 
-            int y = Int32.Parse(PlayerPrefs.GetString("y")); 
-            gameObject.transform.position = new Vector2(x,y);
-        }
-        
+            // Dirty fix!
+            if(!islvl9){
+                int x = Int32.Parse(PlayerPrefs.GetString("x")); 
+                int y = Int32.Parse(PlayerPrefs.GetString("y")); 
+                gameObject.transform.position = new Vector2(x,y);
+            }else{
+                gameObject.transform.position = new Vector2(35,-6.8f);
+            }
+        }   
     }
 
     private void IncreaseDeathCountOnCurrentLvl(){

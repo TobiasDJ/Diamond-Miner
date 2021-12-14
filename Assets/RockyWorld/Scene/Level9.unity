@@ -20239,6 +20239,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8614259742064540428, guid: 7d60c822c3f1b408ea7a00ecdb5e047a,
         type: 3}
+      propertyPath: islvl9
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8614259742064540428, guid: 7d60c822c3f1b408ea7a00ecdb5e047a,
+        type: 3}
       propertyPath: diamond
       value: 
       objectReference: {fileID: 556872330}
