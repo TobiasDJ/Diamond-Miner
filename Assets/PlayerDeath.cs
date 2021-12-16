@@ -14,14 +14,17 @@ public class PlayerDeath : MonoBehaviour
     public bool preOpenStoneDoor;
     public Transform RespawnPointDiamond;
     public Transform RespawnPointStoneDoor;
-    public AudioClip deathAudio;
+    public AudioClip deathAudio, pickupDiamond;
     public bool islvl9;
     /*internal new*/
     public AudioSource audioSource;
+    public AudioSource audioSourceDiamond;
+
 
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        audioSourceDiamond = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
     }
 
@@ -29,6 +32,19 @@ public class PlayerDeath : MonoBehaviour
         if (gameObject ==null || collision.gameObject == null)
         {
             return;
+        }
+        //Dirty: Should have been in another class
+        if(collision.gameObject.tag == "Diamond"){
+            audioSourceDiamond.clip = pickupDiamond;
+            audioSourceDiamond.Play();
+
+            if(preOpenStoneDoor == true){
+                StoneDoor.SetActive(true);
+                diamond.SetActive(false);
+            }else{
+                StoneDoor.SetActive(false);
+                diamond.SetActive(false);
+            }
         }
         
         if(collision.gameObject.tag == "Spikes")

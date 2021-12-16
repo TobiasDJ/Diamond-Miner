@@ -10,7 +10,6 @@ public class MainMenu : MonoBehaviour
     TextMeshProUGUI textMeshProUGUI;
    
    public void Awake(){
-        Debug.Log("Awak(): ");
 
         textMeshProUGUI = GameObject.Find("usernameLoggedIn").GetComponent<TextMeshProUGUI>();
        // PlayerNamePersistance playerNamePersistance = new PlayerNamePersistance();

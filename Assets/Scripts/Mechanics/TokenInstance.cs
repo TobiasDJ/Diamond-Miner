@@ -47,7 +47,6 @@ namespace Platformer.Mechanics
 
         void Awake()
         {
-            PlayerPrefs.SetString("isFirstRun", "true");
             _renderer = GetComponent<SpriteRenderer>();
             animator = GetComponent<Animator>();
             audioSource = GetComponent<AudioSource>();
@@ -60,14 +59,6 @@ namespace Platformer.Mechanics
         void OnTriggerEnter2D(Collider2D other)
         {
             //only exectue OnPlayerEnter if the player collides with this token.
-            if(PlayerPrefs.GetString("isFirstRun") == "false"){
-                audioSource.clip = tokenCollectAudio;
-                audioSource.Play();
-                PlayerPrefs.SetString("isFirstRun", "true");
-            }else{
-                PlayerPrefs.SetString("isFirstRun", "false");
-            }
-
             var player = other.gameObject.GetComponent<PlayerController>();
             if (player != null){
                 OnPlayerEnter(player);
@@ -76,15 +67,6 @@ namespace Platformer.Mechanics
 
         public void OnPlayerEnter(PlayerController player)
         {
-            //sprites = collectedAnimation;
-            if(preOpenStoneWall == true){
-                StoneDoor.SetActive(true);
-                Diamond.SetActive(false);
-            }else{
-                StoneDoor.SetActive(false);
-                Diamond.SetActive(false);
-            }
-         
             sprites = idleAnimation;
         }
         
