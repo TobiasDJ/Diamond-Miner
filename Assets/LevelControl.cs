@@ -14,6 +14,7 @@ public class LevelControl : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             // final stage
+            PlayerPrefs.SetString("isFirstRun", "true");
             if(SceneManager.GetActiveScene().buildIndex == 10){
 
                 int totalScore = 0;

@@ -20,6 +20,7 @@ namespace Platformer.Mechanics
     public class TokenInstance : MonoBehaviour
     {
         public AudioClip tokenCollectAudio;
+        public AudioSource audioSource;
         [SerializeField] TextMeshProUGUI Attempt1TimeText;
         [SerializeField] TextMeshProUGUI Attempt2TimeText;
         [SerializeField] TextMeshProUGUI Attempt3TimeText;
@@ -44,11 +45,12 @@ namespace Platformer.Mechanics
         [SerializeField] GameObject Diamond;
         float startTime = 4f;
 
-        
         void Awake()
         {
+            PlayerPrefs.SetString("isFirstRun", "true");
             _renderer = GetComponent<SpriteRenderer>();
             animator = GetComponent<Animator>();
+            audioSource = GetComponent<AudioSource>();
 
            if (randomAnimationStartTime)
                 frame = Random.Range(0, sprites.Length);
@@ -58,8 +60,18 @@ namespace Platformer.Mechanics
         void OnTriggerEnter2D(Collider2D other)
         {
             //only exectue OnPlayerEnter if the player collides with this token.
+            if(PlayerPrefs.GetString("isFirstRun") == "false"){
+                audioSource.clip = tokenCollectAudio;
+                audioSource.Play();
+                PlayerPrefs.SetString("isFirstRun", "true");
+            }else{
+                PlayerPrefs.SetString("isFirstRun", "false");
+            }
+
             var player = other.gameObject.GetComponent<PlayerController>();
-            if (player != null) OnPlayerEnter(player);
+            if (player != null){
+                OnPlayerEnter(player);
+            }
         }
 
         public void OnPlayerEnter(PlayerController player)
